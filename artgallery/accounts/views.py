@@ -12,9 +12,11 @@ from django.forms import BaseModelForm
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+from django.views.generic import TemplateView
+from orders.models import Cart
 
-
-# Create your views here.
 
 
 
@@ -41,6 +43,24 @@ class UserLoginView(LoginView, UserPassesTestMixin):
     def handle_no_permission(self) -> HttpResponseRedirect:
         return redirect('galleryItems:homepage')
     
+
+
+
+@method_decorator(login_required, name='dispatch')
+class ProfileView(TemplateView):
+    template_name = 'profile.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        cart, created = Cart.objects.get_or_create(user=self.request.user)
+        context['cart'] = cart
+        context['items'] = cart.items.all()
+        context['item_count'] = sum(item.quantity for item in cart.items.all())
+        return context
+    
+
+    
+
 
 
 

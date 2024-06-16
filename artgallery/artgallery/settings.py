@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'galleryItems',
     'crispy_forms', 
     'crispy_bootstrap5',
-    'accounts'
+    'accounts',
+    'orders'
 ]
 
 MIDDLEWARE = [
