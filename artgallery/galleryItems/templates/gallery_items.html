@@ -17,7 +17,7 @@
             {% endfor %}
           </p>
 
-          <a href="#" class="btn btn-primary">Go to {{ item.title }}</a>
+          <a href="{% url 'galleryItems:detailed_item' item.id %}" class="btn btn-primary">Go to {{ item.title }}</a>
           
         </div>
     </div>

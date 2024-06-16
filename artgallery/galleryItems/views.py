@@ -2,7 +2,7 @@ from typing import Any
 from django.http import HttpRequest
 from django.http.response import HttpResponse as HttpResponse
 from django.shortcuts import render, redirect
-from django.views.generic import TemplateView, DetailView, CreateView
+from django.views.generic import TemplateView, DetailView, CreateView, DeleteView
 from .models import GalleryItems
 from .forms import GalleryItemsForm
 from django.forms import BaseModelForm
@@ -35,9 +35,13 @@ class AddItemView(CreateView):
         form.save()
 
         return super().form_valid(form)
+
+
     
-    
-    
+class ItemDetailView(DetailView):
+    model = GalleryItems
+    template_name = "detailed_item.html"
+    context_object_name = "detailed_item"
 
 
     

@@ -9,6 +9,7 @@ app_name = 'galleryItems'
 urlpatterns = [
     path('', views.IndexView.as_view(), name='homepage'),
     path('add_item/', views.AddItemView.as_view(), name='add_item'),
+    path('detailed_view/<int:pk>', views.ItemDetailView.as_view(), name='detailed_item'),
     
 ]
 
