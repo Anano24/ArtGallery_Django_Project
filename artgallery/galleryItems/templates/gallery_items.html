@@ -1,0 +1,28 @@
+{% for item in items %}
+
+<div class="col-md-4 mb-4 mt-5">
+
+    <div class="card" style="width: 18rem;">
+        
+        <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.title }}">
+    
+        <div class="card-body">
+          <h5 class="card-title">{{ item.title }}</h5>
+          <p class="card-text">{{ item.description|slice:":150" }}</p>
+          <p class="card-text"><strong>Price:</strong> {{ item.price }}</p>
+    
+          <p class="card-text"><strong>Categories: </strong>
+            {% for category in item.categories.all %}
+            <span class="badge text-bg-secondary">{{ category.name }}</span>
+            {% endfor %}
+          </p>
+
+          <a href="#" class="btn btn-primary">Go to {{ item.title }}</a>
+          
+        </div>
+    </div>
+
+</div>
+
+{% endfor %}
+

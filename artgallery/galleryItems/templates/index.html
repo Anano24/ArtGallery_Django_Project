@@ -1,0 +1,19 @@
+{% extends 'base.html'%}
+
+{% block title %}  Home page {% endblock %}
+
+
+{% block content %}
+
+    <div class="container">
+        <h1> Upcoming Events </h1>
+        <div class="row" id="event-list">
+
+            {% include 'gallery_items.html'%}
+
+        </div>
+    </div>
+
+    
+
+{% endblock %}
