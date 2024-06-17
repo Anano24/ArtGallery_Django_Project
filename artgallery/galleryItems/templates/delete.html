@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %} Delete {% endblock %}
+
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+    <div class="container mt-5" style="text-align: center;">
+
+        <form method="post">
+            {{form|crispy}}
+            {% csrf_token %}
+
+            <h3>Are you sure you want to delete "{{ object }}"? </h3>
+            <input type="submit" class="btn btn-danger" value="Confirm">
+            <a href="{% url 'galleryItems:homepage' %}" class="btn btn-primary">Cancel</a>
+        </form>
+    </div>
+
+{% endblock%}

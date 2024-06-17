@@ -1,10 +1,7 @@
 from django.shortcuts import redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.utils.decorators import method_decorator
-from django.views.generic import TemplateView
 from .models import GalleryItems, Cart, CartItem
 from django.contrib import messages
-
 
 
 
@@ -16,18 +13,15 @@ def add_to_cart(request, item_id):
     # Check if the item is already in the cart
     cart_item, created = CartItem.objects.get_or_create(cart=cart, product=product)
     if not created:
-        # If the item is already in the cart, show a message
-        messages.info(request, 'This item is already in your cart.')
-        return redirect('galleryItems:homepage') 
-    
-    # If the item is not in the cart, add it
-    cart_item.quantity = 1
-    cart_item.save()
-    messages.success(request, 'Item added to your cart.')
+        # If the item is already in the cart, update the quantity
+        cart_item.quantity += 1
+        cart_item.save()
+    else:
+        # If the item is not in the cart, add it with quantity 1
+        cart_item.quantity = 1
+        cart_item.save()
     
     return redirect('galleryItems:homepage')
-
-
 
 
 @login_required

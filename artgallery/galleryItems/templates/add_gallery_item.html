@@ -7,7 +7,7 @@
 
 {% block content %}
     <div class="container">
-    
+        {% if user.is_authenticated%}
             <h1>Add a new item</h1>
 
             <form method="post" id="itemForm" enctype="multipart/form-data">
@@ -16,7 +16,11 @@
 
                 <button type="submit" class="btn btn-success" id="liveToastBtn" >Add item</button>
             </form>
+            
+        {% else %}
+            <h2>You don't have a permission to add event</h2>
 
+        {% endif %}
     </div>
 
     
