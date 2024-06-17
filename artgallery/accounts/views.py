@@ -16,6 +16,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.views.generic import TemplateView
 from orders.models import Cart
+from typing import Any
 
 
 
@@ -57,9 +58,19 @@ class ProfileView(TemplateView):
         context['items'] = cart.items.all()
         context['item_count'] = sum(item.quantity for item in cart.items.all())
         return context
-    
 
     
+
+class CustomPasswordChangeView(PasswordChangeView):
+    form_class = PasswordChangeForm
+    template_name = "password_change_form.html"
+    success_url = "/password_change_done/"
+
+
+    def form_valid(self, form: Any) -> HttpResponse:
+        user = form.save()
+        update_session_auth_hash(self.request, user)
+        return super().form_valid(form)   
 
 
 

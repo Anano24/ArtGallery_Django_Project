@@ -3,42 +3,48 @@
 {% load cart_extras %}
 
 {% block content %}
+    <div class="container">
 
-<h1>{{ user.username }}'s Profile</h1>
+        <h1>{{ user.username }}'s Profile</h1>
 
-<h2>Your Cart</h2>
+        <a href="{% url 'accounts:password_change' %}" class="btn btn-success">Change Password</a>
 
-{% if items %}
-    <p>Total items in cart: {{ item_count }}</p>
-    <table>
-        <thead>
-            <tr>
-                <th>Item</th>
-                <th>Quantity</th>
-                <th>Price</th>
-                <th>Total</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for item in items %}
-            <tr>
-                <td>{{ item.product.title }}</td>
-                <td>{{ item.quantity }}</td>
-                <td>{{ item.product.price }}</td>
-                <td>{{ item.quantity|mul:item.product.price }}</td>
-                <td>
-                    <form action="{% url 'orders:delete_from_cart' item.product.id %}" method="post" style="display:inline;">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-danger btn-sm">Remove</button>
-                    </form>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-{% else %}
-    <p>Your cart is empty.</p>
-{% endif %}
+        <h2 style="margin-top: 40px;">Your Cart</h2>
+        <hr>
+
+        {% if items %}
+            <p>Total items in cart: {{ item_count }}</p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Item</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in items %}
+                    <tr>
+                        <td>{{ item.product.title }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>{{ item.product.price }}</td>
+                        <td>{{ item.quantity|mul:item.product.price }}</td>
+                        <td>
+                            <form action="{% url 'orders:delete_from_cart' item.product.id %}" method="post" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                            </form>
+                            <a href="#" class="btn btn-success btn-sm">Buy Now</a>
+                        </td> 
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Your cart is empty.</p>
+        {% endif %}
+    </div>
 
 {% endblock %}

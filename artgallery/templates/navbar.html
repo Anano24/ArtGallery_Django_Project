@@ -13,11 +13,11 @@
             <a class="nav-link active" aria-current="page" href="{% url 'galleryItems:homepage' %}">Home</a>
           </li>
 
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              {{ user }}
-            </button>   
-          </div>
+          {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link active me-5" aria-current="page" href="{% url 'accounts:profile' %}">{{user}}</a>
+            </li>
+          {% endif %}
 
          
 
