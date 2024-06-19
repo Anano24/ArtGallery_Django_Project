@@ -3,17 +3,118 @@
 {% block title %}  Home page {% endblock %}
 
 
+
 {% block content %}
 
-    <div class="container">
-        <h1> Upcoming Events </h1>
-        <div class="row" id="event-list">
 
-            {% include 'gallery_items.html'%}
-
+        <div id="carouselExampleSlidesOnly" class="carousel slide position-relative" data-bs-ride="carousel">
+            <div class="carousel-inner" data-bs-slide="fade">
+                <div class="carousel-item active header-img" data-bs-interval="1500">
+                    <img class="d-block w-100" alt="carousel image" src="/media/gallery_items_img/Artboard 2.png">
+                </div>
+                <div class="carousel-item header-img" data-bs-interval="1500">
+                    <img class="d-block w-100" alt="carousel image" src="/media/gallery_items_img/bg-portret-bg.png">
+                </div>
+                <div class="carousel-item header-img" data-bs-interval="1500">
+                <img class="d-block w-100" alt="carousel image" src="/media/gallery_items_img/bg-portret.png">
+            </div>
+            </div>
+            <div class="header-box" >  
+            <p class="header-txt">A.R. ART GALLERY </p>
+            <div class="btn-container ">
+                <a  href="{% url 'galleryItems:shop' %}">
+                    <button type="button" class="gallery-btn">View our Shop</button>
+                </a>
+            </div>
+            </div>
         </div>
-    </div>
+        
+        <div class="container-md mt-5">
+            <p class="quote-txt">'I <span style="font-style: italic; color: #9a0f0f;">dream </span>my painting and I <span style="font-style: italic; color: #9a0f0f;">paint</span> my dream!'</p> 
+        </div>
+        <div class="line-container" >
+            <div class="line"></div>
+        </div>
 
-    
+
+
+        <div class="container-md">   
+            <div class="content-container ">
+                <p class="text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                </p>
+            </div>     
+        </div>
+      
+        <div class="about-container position-relative container-md">
+            <h2 class="about-title">About|Contact</h2>
+            <p class="about-content">Learn more about Anano Robakidze’s life and legacy.</p>
+            <div>
+                <a href="#">
+                  <button type="button" class="about-btn">View</button>
+                </a>
+            </div>
+            <div>
+              <a href="#">
+                <img class="about-img-container" src="/media/gallery_items_img/Artboard 1an.png">
+              </a>  
+            </div>
+        </div>
+      
+      
+          
+        <div class="carousel-shop-container">
+            <h4 class="carousel-shop-title">A.R.<span style="font-style: italic;">SHOP</span></h4>
+            <div id="carouselExampleSlidesOnly" class="carousel slide mt-3" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <!-- First carousel item -->
+                    <div class="carousel-item active carousel-item-costum" data-bs-interval="1700">
+                        <div class="row g-0">
+                            {% for item in items|slice:":3"%}
+                            <div class="col-md-4">
+                                <a href="{% url 'galleryItems:shop' %}">
+                                    <img src="{{ item.image.url }}" class="d-block w-100" alt="card image">
+                                </a>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+        
+                    <!-- Second carousel item -->
+                    <div class="carousel-item carousel-item-costum" data-bs-interval="1700">
+                        <div class="row g-0">
+                            {% for item in items|slice:"3:6" %}
+                            <div class="col-md-4">
+                                <a href="{% url 'galleryItems:shop' %}">
+                                    <img src="{{ item.image.url }}" class="d-block w-100" alt="card image">
+                                </a>  
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>         
+            </div>
+        </div>
+        
+      
+        <div class="line-container" >
+          <div class="line"></div>
+        </div>
+        <div class="container-md mt-5">
+            <div class="content-container ">
+                <p class="text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                </p> 
+            </div>
+            <div class="shop-btn">
+                <a href="{% url 'galleryItems:shop' %}" class="btn" style="color: #9a0f0f; margin-top: 1.25rem;"> VIEW SHOP </a>
+            </div>
+        </div>
+          
+      
 
 {% endblock %}

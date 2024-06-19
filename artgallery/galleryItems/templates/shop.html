@@ -1,0 +1,28 @@
+{% extends 'base.html'%}
+
+{% block title %}  Shop page {% endblock %}
+
+
+{% block content %}
+   
+    <div class="container-fluid product-box ">
+        <div class="baner-box">
+        <h1 class="shop-baner"> Find your <span style="font-style: italic; color: #9a0f0f;">favorite</span> one! </h1>
+        </div>
+        <div class="line-container" style="margin-bottom: 30px;">
+        <div class="line"></div>
+        </div>
+    </div>
+    <div class="gallery-container mb-5 container-fluid">
+        <div class="container-md">
+            <div class="row row-cols-1 row-cols-md-3 g-4 mt-5">
+                
+                {% include 'gallery_items.html'%}
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+

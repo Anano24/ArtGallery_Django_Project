@@ -1,0 +1,291 @@
+
+.navbar {
+    background-color: rgba(0, 123, 255, 0);
+    height: 10%;
+    transition: background-color 0.8s ease-in-out;
+}
+
+.navbar-brand {
+    color:#9a0f0f;
+    font-weight: 600;
+    font-size: 1.5rem;
+    border-color: transparent;
+    border-style: solid;
+    line-height: 1.75rem;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+}
+
+.content-container {
+    padding: 1.25rem;
+} 
+
+
+.position-relative {
+  position: relative;
+}
+
+.header-img {
+    filter: grayscale(10%) contrast(90%) brightness(40%);
+  }
+
+
+.header-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+    
+}
+
+.header-txt {
+    color: #F6F5F5;
+    font-size: 6.25rem;
+    font-weight: 600;
+    border-color: transparent;
+    border-style: solid;
+    line-height: 8.75rem;
+}
+
+  
+.btn-container {
+  margin-top: 3.125rem; /* Add margin for spacing between text and button */
+  
+}
+.gallery-btn {
+    color: #F6F5F5;
+    background-color: #9a0f0f;
+    width: 40%;
+    height: 2.81rem;
+    border-radius: 0;
+    border: none;
+    transition-duration: 0.3s;
+}
+.gallery-btn:hover {
+    background-color: red;
+}
+
+.quote-txt {
+  text-align: center;
+  color: #F6F5F5;
+  font-size: 3.125rem;
+  font-weight: 200;
+  text-transform: uppercase;
+  margin: 9.375rem 0 2.5rem;
+}
+
+.line-container {
+  display: flex;
+  justify-content: center;
+  margin: 3.125rem 0 1.875rem;
+}
+
+.line {
+  border-top: solid 3px #9a0f0f;
+  width: 50%;
+}
+
+
+.about-container {
+  padding: 1.875rem;
+  margin-top: 12.5rem;
+  margin-bottom: 12.5rem;
+  width: 100%;
+  height: 17.5rem;
+  background-color: #222222;
+  border: 1px solid #9a0f0f;
+}
+
+.about-img-container {
+  position: absolute;
+  top: -1.875rem;
+  right: 1.875rem;
+  width: 50%;
+  height: 123%;
+  transition: transform 0.5s ease;
+}
+
+.about-img-container:hover {
+  transform: scale(1.1); /* Adjust the scale factor as needed */ 
+}
+
+.about-title {
+    margin-top: 1.75rem;
+    color: #F6F5F5;
+    font-size: 3.125rem;
+    font-weight: 300;
+}
+
+.about-content {
+    color: #F6F5F5;
+    margin: 1.25rem 0 1.25rem;
+}
+
+.about-btn {
+  color: #F6F5F5;
+  background-color: #9a0f0f;
+  width: 40%;
+  height: 2.8125rem;
+  border-radius: 0;
+  border: none;
+  transition-duration: 0.3s;
+  
+}
+.about-btn:hover {
+    background-color: red;   
+}
+
+.carousel-item-costum {
+  transition: transform 2s ease, opacity .5s ease-out !important;
+}
+
+.shop-btn {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3.75rem;
+}
+
+.carusel-shop-container {
+    background-color: #181717;
+    display: flex; 
+    flex-direction: column; /* Stack children vertically */
+    height: auto; /* Let the container adjust its height based on content */
+    margin-bottom: 1.25rem; /* Add some spacing between containers */
+}
+
+.carousel-shop-title {
+    margin-bottom: 3.125rem;
+    text-align: center;
+    color:#9a0f0f;
+    font-size: 4.375rem;
+    font-weight: 400;
+}
+
+.nav-link {
+    color: #9a0f0f;
+}
+
+.text {
+    color: #F6F5F5;
+}
+
+.text-body-secondary {
+    color: #999999 !important; 
+}
+
+.main-about-txt {
+    color:#F6F5F5;
+    margin: 6.25rem 0 9.375rem;
+}
+
+.auth-btn {
+    color:#9a0f0f;
+    text-decoration: none; 
+    margin-right: 25px;
+}
+
+
+
+
+@media only screen and (max-width: 990px) {
+  
+  .header-txt {
+      font-size: 5.625rem;
+      line-height: 6.875rem;
+  }
+
+  .quote-txt {
+    font-size: 2.5rem;
+    margin: 6.25rem 0 2.5rem;
+  }
+
+  .about-container {
+    padding: 1.56rem;
+    margin-top: 9.375rem;
+    margin-bottom: 9.375rem;
+    height: 12.5rem;
+  }
+
+  .about-img-container {
+    top: -1.56rem;
+    right: 1.56rem;
+    width: 50%;
+    height: 123%;
+  }
+
+  .about-title {
+    margin-top: 1.25rem;
+    font-size: 2rem;
+  }
+
+  .about-content {
+    width: 40%;
+  }
+
+  .about-btn {
+    height: 1.875rem;
+  }
+  
+}
+
+
+/* for mobile screen */
+@media only screen and (max-width: 675px) {
+
+  .navbar-brand {
+    font-size: 1.125rem;
+    line-height: 1.125rem;
+}
+  
+  .header-txt {
+      font-size: 2.5rem;
+      line-height: 2.5rem;
+  }
+
+  .btn-container {
+    margin-top: 1.875rem; /* Add margin for spacing between text and button */ 
+  }
+
+  .quote-txt {
+    font-size: 1.56rem;
+    margin: 5rem 0 2rem;
+  }
+
+  .line-container {
+    margin: 1.875rem 0 1rem;
+  }
+
+  .about-container {
+    margin-top: 6.25rem;
+    margin-bottom: 6.25rem;
+    height: 9.375rem;
+  }
+
+  .about-img-container {
+    top: -1.125rem;
+    right: 1.125rem;
+    width: 50%;
+    height: 123%;
+  }
+
+  .about-title {
+    margin-top: 0;
+    font-size: 1.5625rem;
+  }
+
+  .about-content {
+    margin: 1rem 0 1rem;
+    font-size: 0.75rem;
+  }
+
+  .about-btn {
+    height: 1.5rem;
+  }
+
+  .carousel-shop-title {
+    margin-bottom: 2.5rem;
+    font-size: 2.5rem;
+}
+
+}

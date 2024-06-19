@@ -1,0 +1,180 @@
+
+
+.baner-box {
+    display: flex;
+    justify-content: center;
+}  
+
+.shop-baner {
+    margin: 12.5rem 0 3.75rem;
+    text-align: center;
+    color: #F6F5F5;
+    font-size: 4.375rem;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.btn-buy {
+    color: white;
+    background-color: #9a0f0f;
+    width: 100%;
+    height: 2.8125rem;
+    border: none;
+    border-radius: 0; 
+    text-align: center;
+    display: inline-block; 
+    text-decoration: none; 
+    line-height: 2.5rem;
+    /* margin-top: 1.25rem;  */
+}
+
+
+
+
+
+.btn-buy:hover {
+    background-color: red;
+  }
+
+.shop-item {
+    border: 1px solid #9a0f0f; 
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+    background-color: transparent; 
+    border-radius: 0px;
+}
+
+.card-img-top {
+    transition: transform 0.5s ease;
+    margin-top: 15px !important;
+}  
+.card-img-top:hover{
+    transform: scale(1.1);
+}
+
+.card-img-top-item {
+    transition: transform 0.5s ease;
+}
+
+.card-img-top-item:hover{
+    transform: scale(1.8);
+}
+
+.card-title {
+    color:#777777;
+}
+
+.card-text {
+    color: #F6F5F5;
+}
+.card-price {
+    color: red;
+}
+
+.card-price-btn {
+    margin: 5% 0 5%;
+    color: red;
+}
+
+.page-link {
+    border-radius: 0 !important;
+}
+
+.product-card-container {
+    margin-top: 7%;
+}
+
+.pagination .active-link {
+    background-color: red !important;
+    color: #ffffff !important;
+    border: 1px solid red !important;
+}
+
+.product-card-title {
+    color: #F6F5F5;
+    font-size: 3.75rem;
+    font-weight: 400;
+    font-style: italic;
+    margin: 20% 0 10%;
+}
+
+
+.card-body-product {
+    margin-left: 3.75rem;
+}
+
+.other-product-header {
+    margin-top: 8.75rem;
+    text-align: center;
+    color:#F6F5F5;
+    font-size: 2.1875rem;
+    font-weight: 400;
+}
+
+.shop-item-box {
+    border: 1px solid #9a0f0f; 
+    background-color: #222222; 
+    border-radius: 0;
+}
+
+.card-price {
+    margin-bottom: 1.25rem;
+}
+
+
+
+
+/* for tablet screen */
+@media only screen and (max-width: 990px) {
+    .shop-baner {
+        margin: 9.375rem 0 2.5rem;
+        font-size: 3.125rem;
+    }
+
+    .product-card-title {
+        font-size: 3.125rem;
+    }
+    
+    .other-product-header {
+        margin-top: 5.625rem;
+        font-size: 1.75rem;
+    }
+
+    .product-card-container {
+        margin-top: 10%;
+    }
+
+    .card-body-product {
+        margin-left: 2.5rem;
+    }
+
+}
+
+
+
+
+/* for mobile screen */
+@media only screen and (max-width: 675px) {
+    .shop-baner {
+        margin: 6.25rem 0 1.875rem;
+        font-size: 2.5rem;
+    }
+
+    .product-card-title {
+        font-size: 2.1875rem;
+    }
+    
+    .other-product-header {
+        margin-top: 3.125rem;
+        font-size: 1.25rem;
+    }
+
+    .card-body-product {
+        margin-left: 1.5625rem;
+    }
+
+    .product-card-container {
+        margin-top: 15%;
+    }
+
+      
+}

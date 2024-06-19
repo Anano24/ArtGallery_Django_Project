@@ -17,16 +17,28 @@ from django.db.models import Q
 
 class IndexView(TemplateView):
     template_name = 'index.html'
+
+
+    def get(self, request: HttpRequest, *args: Any, **kwargs: Any) -> HttpResponse:
+        items = GalleryItems.objects.all()
+        
+        return render(request, self.template_name, {'items': items})
     
 
+        
+
+class ShopView(TemplateView):
+    template_name = 'shop.html'
+    
     def get(self, request, *args, **kwargs):
         cart_items = []
-        query = request.GET.get("item_query")
+        query = request.GET.get("query")
 
         if query:
             items = GalleryItems.objects.filter(
                 Q(title__icontains=query) | Q(price__contains=query)
             )
+            print(f"Filtered items: {items}")
         else:
             items = GalleryItems.objects.all()
 
@@ -54,7 +66,7 @@ class AddItemView(PermissionRequiredMixin, CreateView):
         return super().form_valid(form)
     
     def handle_no_permission(self) -> HttpResponseRedirect:
-        return redirect('galleryItems:homepage')
+        return redirect('galleryItems:shop')
 
 
 
@@ -62,7 +74,7 @@ class AddItemView(PermissionRequiredMixin, CreateView):
 class DeleteItemView(PermissionRequiredMixin, DeleteView):
     model = GalleryItems
     template_name = 'delete.html'
-    success_url = reverse_lazy('galleryItems:homepage')
+    success_url = reverse_lazy('galleryItems:shop')
     permission_required = 'galleryItems.delete_item'
 
 

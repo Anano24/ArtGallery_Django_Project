@@ -12,9 +12,9 @@
             {{form|crispy}}
             {% csrf_token %}
 
-            <h3>Are you sure you want to delete "{{ object }}"? </h3>
-            <input type="submit" class="btn btn-danger" value="Confirm">
-            <a href="{% url 'galleryItems:homepage' %}" class="btn btn-primary">Cancel</a>
+            <h3 style="color: #ffffff; margin: 15% 0 4%; text-align: center; font-size: 2rem;">Are you sure you want to delete "{{ object }}"? </h3>
+            <input type="submit" class="btn btn-danger" value="Confirm" style="border-radius: 0;">
+            <a href="{% url 'galleryItems:homepage' %}" class="btn btn-success" style="border-radius: 0;">Cancel</a>
         </form>
     </div>
 
