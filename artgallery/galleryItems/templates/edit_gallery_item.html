@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %} Edit item {% endblock %}
+
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+    
+        <div class="container mt-5">
+            <div class="card" style="border: 1px solid #9a0f0f; background-color: #222222; border-radius: 0; padding: 15px; margin: 9.375rem 0 6.25rem; color: #ffffff;">
+            
+                    {% if user.is_authenticated%}
+                    <h1 style="margin-bottom: 30px;">Edit the item</h1>
+                    <form method="post" id="itemForm" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+
+                        <button type="submit" class="btn btn-success" id="liveToastBtn" style="border-radius: 0;" >Save changes</button>
+                    </form>
+                    
+                {% else %}
+                    <h2>You don't have a permission to add event</h2>
+
+                {% endif %}
+
+            </div>
+        </div>
+            
+{% endblock %}
+
+

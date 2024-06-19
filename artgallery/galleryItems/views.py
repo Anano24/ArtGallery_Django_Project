@@ -2,7 +2,7 @@ from typing import Any
 from django.http import HttpRequest
 from django.http.response import HttpResponse as HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views.generic import TemplateView, DetailView, CreateView, DeleteView
+from django.views.generic import TemplateView, DetailView, CreateView, DeleteView, UpdateView
 from .models import GalleryItems
 from .forms import GalleryItemsForm
 from django.forms import BaseModelForm
@@ -16,9 +16,9 @@ from django.core.paginator import Paginator
 # Create your views here.
 
 
+
 class IndexView(TemplateView):
     template_name = 'index.html'
-
 
     def get(self, request: HttpRequest, *args: Any, **kwargs: Any) -> HttpResponse:
         items = GalleryItems.objects.all()
@@ -41,13 +41,12 @@ class ShopView(TemplateView):
             )
             print(f"Filtered items: {items}")
         else:
-            items = GalleryItems.objects.all()
+            items = GalleryItems.objects.all().order_by('id')
 
 
-        paginator = Paginator(items, 3)
+        paginator = Paginator(items, 6)
         page_number = request.GET.get('page')
         items = paginator.get_page(page_number)
-
 
 
         if request.user.is_authenticated:
@@ -77,6 +76,21 @@ class AddItemView(PermissionRequiredMixin, CreateView):
 
 
 
+class EditItemView(PermissionRequiredMixin, UpdateView):
+    model = GalleryItems
+    form_class = GalleryItemsForm
+    template_name = "edit_gallery_item.html"
+    success_url = reverse_lazy('galleryItems:shop')
+    permission_required = "galleryItems.edit_item"
+
+    def form_valid(self, form: BaseModelForm) -> HttpResponse:
+        form.save()
+        return super().form_valid(form)
+    
+    def handle_no_permission(self) -> HttpResponseRedirect:
+        return redirect('galleryItems:shop')
+
+ 
     
 class DeleteItemView(PermissionRequiredMixin, DeleteView):
     model = GalleryItems
@@ -93,7 +107,7 @@ class DeleteItemView(PermissionRequiredMixin, DeleteView):
     
 
 
-class ItemDetailView(TemplateView):
+class ItemDetailView(DetailView):
     template_name = 'detailed_item.html'
 
     def get(self, request, *args, **kwargs):

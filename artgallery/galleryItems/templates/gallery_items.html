@@ -19,6 +19,7 @@
 
                       {% if user.is_authenticated and user.is_superuser %}
                         <a href="{% url 'galleryItems:add_item' %}" class="btn-buy" style="background-color: #198754;">Add Item</a>
+                        <a href="{% url 'galleryItems:edit_item' item.id %}" class="btn-buy">Edit Item</a>
                         <a href="{% url 'galleryItems:delete_item' item.id %}" class="btn-buy" style="background-color: black;">Delete {{item.title}} </a>
                       {% endif %}
 
