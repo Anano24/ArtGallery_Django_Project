@@ -11,6 +11,7 @@ from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin, 
 from django.http.response import HttpResponse as HttpResponse, HttpResponseRedirect
 from orders.models import Cart, CartItem
 from django.db.models import Q
+from django.core.paginator import Paginator
 
 # Create your views here.
 
@@ -41,6 +42,12 @@ class ShopView(TemplateView):
             print(f"Filtered items: {items}")
         else:
             items = GalleryItems.objects.all()
+
+
+        paginator = Paginator(items, 3)
+        page_number = request.GET.get('page')
+        items = paginator.get_page(page_number)
+
 
 
         if request.user.is_authenticated:
