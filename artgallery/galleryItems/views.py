@@ -37,7 +37,7 @@ class ShopView(TemplateView):
 
         if query:
             items = GalleryItems.objects.filter(
-                Q(title__icontains=query) | Q(price__contains=query)
+                Q(title__icontains=query)
             )
             print(f"Filtered items: {items}")
         else:
@@ -62,7 +62,7 @@ class AddItemView(PermissionRequiredMixin, CreateView):
     model = GalleryItems
     form_class = GalleryItemsForm
     template_name = "add_gallery_item.html"
-    success_url = "/"
+    success_url = reverse_lazy('galleryItems:shop')
     permission_required = "galleryItems.add_item"
 
 
